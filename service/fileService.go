@@ -30,7 +30,13 @@ func (s *FileService) GetFilePath() string {
 	return basePath + "/"
 }
 
-func (s *FileService) CreateCommand(methodType string, hexString string) {
+func (s *FileService) CreateCommand(methodType string, hexString string, isSource bool) {
+	if isSource {
+		methodType = util.ConstantsUtilsInst.GET_METHOD_DESCRIPTION_SOURCE(methodType)
+	} else {
+		methodType = util.ConstantsUtilsInst.GET_METHOD_DESCRIPTION_TARGET(methodType)
+	}
+
 	path := FileServiceInst.GetFilePath()
 	fileName := FileServiceInst.GetFileName(methodType)
 

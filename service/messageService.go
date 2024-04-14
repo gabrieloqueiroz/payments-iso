@@ -3,7 +3,6 @@ package service
 import (
 	"fmt"
 	"iso8583/processor"
-	"iso8583/util"
 )
 
 type MessageService struct {
@@ -13,7 +12,7 @@ type MessageService struct {
 func (s *MessageService) CreateMsg() {
 
 	msgBuilded := s.findProcessor()
-	FileServiceInst.CreateCommand(util.ConstantsUtilsInst.GET_METHOD_DESCRIPTION(s.MethodType), msgBuilded)
+	FileServiceInst.CreateCommand(s.MethodType, msgBuilded, true)
 
 	fmt.Printf("ISO Message: %s \n", msgBuilded)
 }
@@ -25,6 +24,7 @@ func (s *MessageService) findProcessor() string {
 		processor.RequestCancelProcessor{},
 		processor.RequestUnmkProcessor{},
 		processor.RequestPreAuthProcessor{},
+		processor.RequestConfirmPreAuthProcessor{},
 	}
 
 	i := New()

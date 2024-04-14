@@ -19,22 +19,36 @@ func (s *ConstantsUtils) REQUEST_CANCELING() string {
 	return "0400"
 }
 
-func (s *ConstantsUtils) REQUEST_PRE_AUTHORIZATION() string {
+func (s *ConstantsUtils) REQUEST_CONFIRM_PRE_AUTHORIZATION() string {
 	return "0220"
 }
 
-func (this *ConstantsUtils) GET_METHOD_DESCRIPTION(mti string) string {
+func (s *ConstantsUtils) REQUEST_PRE_AUTHORIZATION() string {
+	return "0100"
+}
+
+func (this *ConstantsUtils) GET_METHOD_DESCRIPTION_SOURCE(mti string) string {
 	switch mti {
 	case this.REQUEST_AUTHORIZATION():
 		return "REQUEST_AUTHORIZATION"
-	case this.REQUEST_BRAND():
-		return "REQUEST_BRAND"
 	case this.REQUEST_CANCELING():
 		return "REQUEST_CANCELING"
 	case this.REQUEST_UNMAKING():
 		return "REQUEST_UNMAKING"
 	case this.REQUEST_PRE_AUTHORIZATION():
 		return "REQUEST_PRE_AUTHORIZATION"
+	case this.REQUEST_CONFIRM_PRE_AUTHORIZATION():
+		return "REQUEST_CONFIRM_PRE_AUTHORIZATION"
+	default:
+		return "Not found Mti"
+	}
+}
+
+func (this *ConstantsUtils) GET_METHOD_DESCRIPTION_TARGET(mti string) string {
+
+	switch mti {
+	case this.REQUEST_BRAND():
+		return "REQUEST_BRAND"
 	default:
 		return "Not found Mti"
 	}
